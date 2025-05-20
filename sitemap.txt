@@ -1,8 +1,8 @@
 / - dashboard
 /users - lists all users
-/user/{id} - detailed information about a single user
+/users/{id} - detailed information about a single user
 /clients - lists all clients
-/client/{id} - detailed information about a single client
+/clients/{id} - detailed information about a single client
 /projects - lists all projects
 /project/{id} - detailed information about a single project
 
