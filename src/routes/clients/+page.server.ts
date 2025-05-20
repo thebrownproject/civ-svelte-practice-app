@@ -12,6 +12,13 @@ export const load: PageServerLoad = async ({ fetch }) => {
       },
     });
 
+    if (!response.ok) {
+      // If client not found (404) or other HTTP error, consider item as null
+      console.error(
+        `API Error for clients: ${response.status} ${response.statusText}`
+      );
+    }
+
     const data: any = await response.json();
     return {
       clients: data,
