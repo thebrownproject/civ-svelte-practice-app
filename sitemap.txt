@@ -1,0 +1,9 @@
+/ - dashboard
+/users - lists all users
+/users/{id} - detailed information about a single user
+/clients - lists all clients
+/clients/{id} - detailed information about a single client
+/projects - lists all projects
+/project/{id} - detailed information about a single project
+
+/login - users log into system
