@@ -1,29 +1,45 @@
 <script lang="ts">
-  import { PUBLIC_API_KEY, PUBLIC_API_URL } from "$env/static/public";
-  import type { User } from "$lib/classes";
+  import type { PageProps } from "./$types";
 
-  let users: User[] | undefined = $state();
-
-  $effect(() => {
-    (async () => {
-      await fetch(`${PUBLIC_API_URL}/Users`, {
-        method: "GET",
-        headers: {
-          apikey: PUBLIC_API_KEY,
-        },
-      })
-        .then((res) => res.json())
-        .then((data) => (users = data));
-    })();
-  });
+  let { data }: PageProps = $props();
+  let total = data.users.length;
 </script>
 
-<h1>Users</h1>
-{#if users}
-  {#each users as user}
-    <a class="anchor" href="/users/{user.id}">
-      {user.email}
-    </a>
-    <br />
-  {/each}
+<h1>Active Users</h1>
+
+{#if data}
+  <div class="centred-div">
+    {#each data.users as user}
+      <a class="anchor" href={`/users/${user.id}`}>
+        {user.first_name} {user.last_name}
+      </a>
+      <br />
+    {/each}
+  </div>
+{:else}
+  <p>Loading...</p>
 {/if}
+
+<div class="centred-div users-total">
+  {total} Active Users
+</div>
+
+<style>
+  .centred-div {
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .users-total {
+    margin-top: 20px;
+  }
+  .anchor {
+    color: #0066cc;
+    text-decoration: none;
+  }
+  .anchor:hover {
+    text-decoration: underline;
+  }
+</style>
