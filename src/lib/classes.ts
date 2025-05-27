@@ -60,3 +60,22 @@ export class Client {
     this.contact_email = contact_email;
   }
 }
+
+export class Client {
+  id: Number;
+  name: String;
+  contact_person: String;
+  contact_email: String;
+
+  constructor(
+    id: Number,
+    name: String,
+    contact_person: String,
+    contact_email: String
+  ) {
+    this.id = id;
+    this.name = name;
+    this.contact_person = contact_person;
+    this.contact_email = contact_email;
+  }
+}
