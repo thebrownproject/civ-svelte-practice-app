@@ -6,7 +6,7 @@
 </script>
 
 {#if data}
-  <div class="centred-div">
+  <div class="centred-div text-blue-500">
     {#each data.clients as client}
       <a href="/clients/{client.id}">{client.name} </a>
     {/each}

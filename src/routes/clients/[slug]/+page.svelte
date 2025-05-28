@@ -18,9 +18,9 @@
     <div class="centred-div">
       <h2 class="padding-top">({total}) Projects</h2>
     </div>
-    <div class="centred-div">
+    <div class="centred-div text-blue-500">
       {#each data.clients[0].Projects as project}
-        <div>{project.name}</div>
+        <div><a href="/projects/{project.id}">{project.name}</a></div>
       {/each}
     </div>
   {:else}
