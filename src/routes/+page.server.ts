@@ -9,7 +9,9 @@ import { PUBLIC_API_KEY, PUBLIC_API_URL } from '$env/static/public';
  * @param {Object} params - The parameters passed to the load function.
  * @returns {Promise<Object>} - An object containing projects and clients data.
  */
-export const load: PageServerLoad = async ({ params }) => {
+export const load: PageServerLoad = async ({ params, cookies }) => {
+
+
 	// Fetch the projects from the API
 	let usersData: any = await fetch(`${PUBLIC_API_URL}/Users?select=id`, {
 		method: 'GET',
