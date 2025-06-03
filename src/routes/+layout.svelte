@@ -39,7 +39,6 @@
 
 <AppBar headlineClasses="sm:hidden" centerClasses="hidden sm:block">
   {#snippet lead()}
-    <ArrowLeft size={24} onclick={() => window.history.back()} />
     <ArrowLeft size={50} onclick={() => window.history.back()} />
 
     <select class="select" bind:value={data_theme}>

@@ -1,36 +1,39 @@
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ cookies }) => {
-    const currentLoginStatus = cookies.get('loginStatus');
-    
-    return {
-        currentLoginStatus
-    };
+  const currentLoginStatus = cookies.get('loginStatus');
+
+  return {
+    rawUsers: [],
+    rawProjects: [],
+    rawClients: [],
+    currentLoginStatus
+  };
 };
 
 export const actions = {
-    LoginOn: async ({ cookies }) => {
-        console.log("Setting cookie to 'true'")
+  LoginOn: async ({ cookies }) => {
+    console.log("Setting cookie to 'true'")
 
-        cookies.set('loginStatus', 'true', {
-            path: '/',
-            httpOnly: false,	
-            secure: false,
-        });
-        
-        return { success: true };
-    },
+    cookies.set('loginStatus', 'true', {
+      path: '/',
+      httpOnly: false,
+      secure: false,
+    });
 
-    LoginOff: async ({ cookies }) => {
-        console.log("Setting cookie to 'false'")
+    return { success: true };
+  },
 
-        cookies.set('loginStatus', 'false', {
-            path: '/',
-            httpOnly: false,	
-            secure: false,
-        });
-        
-        return { success: true };
-    }
+  LoginOff: async ({ cookies }) => {
+    console.log("Setting cookie to 'false'")
+
+    cookies.set('loginStatus', 'false', {
+      path: '/',
+      httpOnly: false,
+      secure: false,
+    });
+
+    return { success: true };
+  }
 };
 

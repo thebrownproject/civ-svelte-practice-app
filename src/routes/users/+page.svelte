@@ -2,16 +2,17 @@
   import type { PageProps } from "./$types";
 
   let { data }: PageProps = $props();
-  let total = data.users.length;
+  let total = data.rawUsers.length;
 </script>
 
 <h1>Active Users</h1>
 
 {#if data}
   <div class="centred-div">
-    {#each data.users as user}
+    {#each data.rawUsers as user}
       <a class="anchor" href={`/users/${user.id}`}>
-        {user.first_name} {user.last_name}
+        {user.first_name}
+        {user.last_name}
       </a>
       <br />
     {/each}
