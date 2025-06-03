@@ -20,16 +20,11 @@ export const load: PageServerLoad = async ({ fetch }) => {
 
     const data: any = await response.json();
     return {
-      rawUsers: data,
-      rawProjects: [],
-      rawClients: [],
+      Users: data,
     };
   } catch (error) {
     console.error("Error fetching active users:", error);
     return {
-      rawUsers: [],
-      rawProjects: [],
-      rawClients: [],
     };
   }
 };

@@ -38,12 +38,8 @@ declare global {
 
   // Declare global types for SvelteKit
   namespace App {
-    interface PageData {
-      rawUsers: User[];
-      rawProjects: Project[];
-      rawClients: Client[];
-    }
   }
 }
+}
 
-export {};
+export { };
