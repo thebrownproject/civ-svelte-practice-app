@@ -4,9 +4,6 @@ export const load: PageServerLoad = async ({ cookies }) => {
   const currentLoginStatus = cookies.get('loginStatus');
 
   return {
-    rawUsers: [],
-    rawProjects: [],
-    rawClients: [],
     currentLoginStatus
   };
 };
