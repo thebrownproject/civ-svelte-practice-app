@@ -1,5 +1,6 @@
 import type { PageServerLoad } from './$types';
 import { PUBLIC_API_KEY, PUBLIC_API_URL } from '$env/static/public';
+import { redirect } from "@sveltejs/kit";
 
 /**
  * This function loads the projects and clients data from the API.
@@ -10,6 +11,13 @@ import { PUBLIC_API_KEY, PUBLIC_API_URL } from '$env/static/public';
  * @returns {Promise<Object>} - An object containing projects and clients data.
  */
 export const load: PageServerLoad = async ({ params, cookies }) => {
+
+		const loginStatus = cookies.get('loginStatus');
+	
+		if (loginStatus !== 'true') {
+			throw redirect(302, '/login');
+		}
+	
 
 
 	// Fetch the projects from the API
