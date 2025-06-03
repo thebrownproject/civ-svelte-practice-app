@@ -8,6 +8,10 @@
 	import Menu from '@lucide/svelte/icons/menu';
 	import { Switch } from '@skeletonlabs/skeleton-svelte';
 
+	let { children } = $props();
+	let data_theme: string | null = $state('');
+	let darkmode: boolean = $state(false);
+
 	import { Navigation } from '@skeletonlabs/skeleton-svelte';
 
 	// Icons
@@ -39,7 +43,10 @@
 
 <AppBar headlineClasses="sm:hidden" centerClasses="hidden sm:block">
 	{#snippet lead()}
+
+		<ArrowLeft size={24} onclick={() => window.history.back()} />
 		<ArrowLeft size={50} onclick={() => window.history.back()} />
+
 		<select class="select" bind:value={data_theme}>
 			<option value="nosh">Nosh</option>
 			<option value="cerberus">Cerberus</option>
@@ -54,6 +61,16 @@
 			<Calendar size={20} />
 			<CircleUser size={20} />
 		</div>
+
+		<div class="block sm:hidden">
+			<Menu size={20} />
+		</div>
+	{/snippet}
+	{#snippet headline()}
+		<h2 class="h2">Title</h2>
+	{/snippet}
+	<span>Project Tracker</span>
+
 		<div class="block self-center sm:hidden">
 			<Menu
 				size={35}
@@ -113,6 +130,7 @@
 			<a href="/users" class="text-sm text-primary-500 hover:underline">Users</a>
 		</div>
 	</div>
+
 </AppBar>
 
 {@render children()}
